@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indemnity Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        input[type="text"], input[type="email"], input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .emergency {
+            display: none;
+        }
+        .terms {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Indemnity Form</h1>
+    <form action="https://formspree.io/f/mwpegqav" method="POST">
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" required>
+
+        <label for="idnumber">ID Number:</label>
+        <input type="text" id="idnumber" name="idnumber" maxlength="13" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="_replyto" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label>
+            <input type="checkbox" id="emergencyToggle"> Add Emergency Contact
+        </label>
+
+        <div class="emergency" id="emergencyDetails">
+            <label for="emergency_name">Emergency Contact Name:</label>
+            <input type="text" id="emergency_name" name="emergency_name">
+
+            <label for="emergency_phone">Emergency Contact Phone Number:</label>
+            <input type="tel" id="emergency_phone" name="emergency_phone">
+        </div>
+
+        <div class="terms">
+            <p>
+                <strong>1. Voluntary Participation:</strong> I, the undersigned, hereby declare that I am voluntarily participating in the event/activity without any form of coercion, pressure, or undue influence. I acknowledge that my participation is of my own free will and with a clear understanding of the associated risks.
+            </p>
+            <p>
+                <strong>2. Acknowledgment of Risk:</strong> I fully understand and accept that participation in the event/activity may involve certain inherent risks, hazards, or dangers, which could result in bodily injury, illness, death, or property damage. I assume full responsibility for these risks and voluntarily choose to participate despite these risks.
+            </p>
+            <p>
+                <strong>3. Indemnity and Waiver of Liability:</strong> In consideration of being allowed to participate in this event/activity, I hereby waive, release, and discharge the event organisers, its employees, agents, volunteers, contractors, and any affiliated persons or entities ("the Provider") from any and all liability, claims, demands, damages, or actions whatsoever arising out of or related to any loss, damage, injury, or death that may be sustained by me or to any property belonging to me, whether caused by negligence, breach of contract, or otherwise.
+            </p>
+            <p>
+                <strong>4. Exclusion of Liability for Third Parties:</strong> I understand that the Provider is not responsible for the actions of third parties, including but not limited to other participants, service providers, or bystanders, and I hereby release the Provider from any claims arising from such actions.
+            </p>
+            <p>
+                <strong>5. Conduct and Responsibility:</strong> I agree to conduct myself in a safe and responsible manner at all times during my participation in the event/activity. I will follow all instructions and guidelines provided by the Provider or its agents. I accept full responsibility for my own conduct and any consequences arising from any breach of these obligations.
+            </p>
+            <p>
+                <strong>6. No Refund Policy:</strong> I acknowledge that no refunds or compensation will be provided by the Provider in the event that I choose to discontinue my participation or if I am removed from the event due to misconduct or breach of the event rules.
+            </p>
+            <p>
+                <strong>7. Medical Fitness:</strong> I certify that I am in good health and do not suffer from any medical condition that could pose a risk to myself or others during the event. I further certify that I am not under the influence of drugs or alcohol, and that I am of sound mind to make informed decisions.
+            </p>
+            <p>
+                <strong>8. Emergency Contact:</strong> I have provided an emergency contact who can be reached in case of an emergency during the event. I consent to the event organisers contacting this person should the need arise.
+            </p>
+            <p>
+                <strong>9. Applicable Law:</strong> This indemnity and waiver of liability shall be governed by and construed in accordance with the laws of the Republic of South Africa. Any disputes arising from this agreement shall be subject to the exclusive jurisdiction of the courts of South Africa.
+            </p>
+            <p>
+                By submitting this form, I acknowledge that I have read, understood, and agree to the terms and conditions stated above. I hereby agree to indemnify the Provider and accept full legal responsibility for any claims arising from my participation in the event/activity.
+            </p>
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<script>
+    // Show emergency contact fields if checkbox is selected
+    document.getElementById('emergencyToggle').addEventListener('change', function () {
+        var emergencyDetails = document.getElementById('emergencyDetails');
+        if (this.checked) {
+            emergencyDetails.style.display = 'block';
+        } else {
+            emergencyDetails.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
