@@ -65,16 +65,16 @@
     <h1>Indemnity Form</h1>
     <form action="https://formspree.io/f/mwpegqav" method="POST">
         <label for="fullname">Full Name:</label>
-        <input type="text" id="fullname" name="fullname" required>
+        <input type="text" id="fullname" name="Full Name" required>
 
         <label for="idnumber">ID Number:</label>
-        <input type="text" id="idnumber" name="idnumber" minlength="13" maxlength="13" required>
+        <input type="number" id="idnumber" name="ID Number" minlength="13" maxlength="13" required>
 
         <label for="email">Email Address:</label>
-        <input type="email" id="email" name="_replyto" required>
+        <input type="email" id="email" name="Email Address" required>
 
         <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone" minlength="10" maxlength="10" required>
+        <input type="tel" id="phone" name="Phone Number" minlength="10" maxlength="10" required>
 
         <label>
             <input type="checkbox" id="emergencyToggle"> Add Emergency Contact (Optional)
@@ -82,10 +82,10 @@
 
         <div class="emergency" id="emergencyDetails">
             <label for="emergency_name">Emergency Contact Name:</label>
-            <input type="text" id="emergency_name" name="emergency_name">
+            <input type="text" id="emergency_name" name="Emergency Contact Name">
 
             <label for="emergency_phone">Emergency Contact Phone Number:</label>
-            <input type="tel" id="emergency_phone" name="emergency_phone">
+            <input type="tel" id="emergency_phone" name="Emergency Contact Phone Number">
         </div>
 
         <div class="terms">
