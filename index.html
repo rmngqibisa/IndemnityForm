@@ -58,6 +58,10 @@
             color: #555;
             margin-top: 20px;
         }
+        *:focus-visible {
+            outline: 2px solid #4CAF50;
+            outline-offset: 2px;
+        }
     </style>
 </head>
 <body>
@@ -69,7 +73,7 @@
         <input type="text" id="fullname" name="Full Name" required>
 
         <label for="idnumber">ID Number:</label>
-        <input type="text" id="idnumber" name="ID Number" minlength="13" maxlength="13" required pattern="^\d{13}$" title="Please a valid ID Number.">
+        <input type="text" id="idnumber" name="ID Number" minlength="13" maxlength="13" required pattern="^\d{13}$" inputmode="numeric" title="Please enter a valid 13-digit South African ID Number.">
 
         <label for="email">Email Address:</label>
         <input type="email" id="email" name="Email Address" required>
@@ -124,7 +128,7 @@
 
          <div>
             <input type="checkbox" id="termsCheckbox" name="T's & C's Acceptance Checkbox" required>
-            <label for="T's & C's Acceptance Checkbox">I acknowledge that I have read, understood, and agree to the terms and conditions stated above, and that I am participating voluntarily without coercion or undue influence.</label>
+            <label for="termsCheckbox">I acknowledge that I have read, understood, and agree to the terms and conditions stated above, and that I am participating voluntarily without coercion or undue influence.</label>
         </div>
 
         <input type="submit" value="Submit">
