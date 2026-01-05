@@ -2,67 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; form-action https://formspree.io; base-uri 'self';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azanian Eagle's Indemnity Form</title>
     <link rel="icon" href="RM.png" type="image/png">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            width: 100%;
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        label {
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        input[type="text"], input[type="email"], input[type="tel"] {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        input[type="submit"] {
-            width: 100%;
-            background-color: #4CAF50;
-            color: white;
-            padding: 14px 20px;
-            margin-top: 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-        .emergency {
-            display: none;
-        }
-        .terms {
-            font-size: 0.9em;
-            color: #555;
-            margin-top: 20px;
-        }
-        *:focus-visible {
-            outline: 2px solid #4CAF50;
-            outline-offset: 2px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -73,13 +19,13 @@
         <input type="text" id="fullname" name="Full Name" required>
 
         <label for="idnumber">ID Number:</label>
-        <input type="text" id="idnumber" name="ID Number" minlength="13" maxlength="13" required pattern="^\d{13}$" inputmode="numeric" title="Please enter a valid 13-digit South African ID Number.">
+        <input type="text" id="idnumber" name="ID Number" minlength="13" maxlength="13" required pattern="^\d{13}$" title="Please enter a valid ID Number.">
 
         <label for="email">Email Address:</label>
         <input type="email" id="email" name="Email Address" required>
 
         <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="Phone Number" minlength="10" maxlength="10" required>
+        <input type="tel" id="phone" name="Phone Number" minlength="10" maxlength="10" required pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number">
 
         <label>
             <input type="checkbox" id="emergencyToggle"> Add Emergency Contact (Optional)
@@ -90,7 +36,7 @@
             <input type="text" id="emergency_name" name="Emergency Contact Name">
 
             <label for="emergency_phone">Emergency Contact Phone Number:</label>
-            <input type="tel" id="emergency_phone" name="Emergency Contact Phone Number">
+            <input type="tel" id="emergency_phone" name="Emergency Contact Phone Number" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number">
         </div>
 
         <div class="terms">
@@ -135,18 +81,7 @@
     </form>
 </div>
 
-<script>
-    // Show emergency contact fields if checkbox is selected
-    document.getElementById('emergencyToggle').addEventListener('change', function () {
-        var emergencyDetails = document.getElementById('emergencyDetails');
-        if (this.checked) {
-            emergencyDetails.style.display = 'block';
-        } else {
-            emergencyDetails.style.display = 'none';
-        }
-    });
-</script>
-<footer style="text-align: center;">
+<footer>
     <p>Brought to you by the great minds at <a href="https://eagle-i.mngqibisafoundation.org/">Azanian Eagle</a>. All Rights Reserved.</p>
 </footer>
 </body>
