@@ -18,16 +18,16 @@
     <h1>Indemnity Form</h1>
     <form action="https://formspree.io/f/mwpegqav" method="POST">
         <label for="fullname">Full Name:</label>
-        <input type="text" id="fullname" name="Full Name" required>
+        <input type="text" id="fullname" name="Full Name" required autocomplete="name">
 
         <label for="idnumber">ID Number:</label>
-        <input type="text" id="idnumber" name="ID Number" minlength="13" maxlength="13" required pattern="^\d{13}$" title="Please enter a valid ID Number.">
+        <input type="text" id="idnumber" name="ID Number" minlength="13" maxlength="13" required pattern="^\d{13}$" title="Please enter a valid ID Number." autocomplete="off">
 
         <label for="email">Email Address:</label>
-        <input type="email" id="email" name="Email Address" required>
+        <input type="email" id="email" name="Email Address" required autocomplete="email">
 
         <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="Phone Number" minlength="10" maxlength="10" required pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number">
+        <input type="tel" id="phone" name="Phone Number" minlength="10" maxlength="10" required pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" autocomplete="tel">
 
         <label>
             <input type="checkbox" id="emergencyToggle"> Add Emergency Contact (Optional)
@@ -84,7 +84,7 @@
 </div>
 
 <footer>
-    <p>Brought to you by the great minds at <a href="https://eagle-i.mngqibisafoundation.org/">Azanian Eagle</a>. All Rights Reserved.</p>
+    <p>Brought to you by the great minds at <a href="https://eagle-i.mngqibisafoundation.org/" target="_blank" rel="noopener noreferrer">Azanian Eagle</a>. All Rights Reserved.</p>
 </footer>
 </body>
 </html>
