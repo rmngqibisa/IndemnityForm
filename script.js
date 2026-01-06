@@ -1,6 +1,10 @@
+// Cached DOM elements
+var emergencyToggle = document.getElementById('emergencyToggle');
+var emergencyDetails = document.getElementById('emergencyDetails');
+var idInput = document.getElementById('idnumber');
+
 // Show emergency contact fields if checkbox is selected
-document.getElementById('emergencyToggle').addEventListener('change', function () {
-    var emergencyDetails = document.getElementById('emergencyDetails');
+emergencyToggle.addEventListener('change', function () {
     if (this.checked) {
         emergencyDetails.style.display = 'block';
     } else {
@@ -8,35 +12,57 @@ document.getElementById('emergencyToggle').addEventListener('change', function (
     }
 });
 
-// Validate South African ID Number using Luhn Algorithm
+/**
+ * Validates a South African ID number using the Luhn algorithm.
+ * @param {string} id - The ID number to validate.
+ * @returns {boolean} - True if the ID is valid according to the checksum.
+ */
 function isValidSAID(id) {
+    // South African IDs must be exactly 13 digits
     if (!/^\d{13}$/.test(id)) return false;
-    let sum = 0;
-    for (let i = 0; i < 13; i++) {
-        let digit = parseInt(id.charAt(i));
-        // Double every second digit from the right (which are odd indices 1, 3, 5... 11)
-        if (i % 2 === 1) {
+
+    var sum = 0;
+    var shouldDouble = false; // Start from right (check digit), which is not doubled
+
+    // Iterate from right to left
+    for (var i = 12; i >= 0; i--) {
+        var digit = parseInt(id.charAt(i));
+
+        if (shouldDouble) {
             digit *= 2;
             if (digit > 9) digit -= 9;
         }
+
         sum += digit;
+        shouldDouble = !shouldDouble;
     }
-    return sum % 10 === 0;
+
+    return (sum % 10) === 0;
 }
 
-const idInput = document.getElementById('idnumber');
-if (idInput) {
-    idInput.addEventListener('input', function() {
-        // Only validate if we have the full length to avoid annoyance while typing
-        if (this.value.length === 13) {
-            if (!isValidSAID(this.value)) {
-                this.setCustomValidity('Invalid South African ID Number checksum.');
-            } else {
-                this.setCustomValidity('');
-            }
-        } else {
-            // Reset validity while typing (HTML minlength handles length validation on submit)
-            this.setCustomValidity('');
+// Validate ID on input/blur
+function validateID() {
+    var id = idInput.value;
+
+    // Reset validity state
+    idInput.setCustomValidity("");
+
+    // Only perform Luhn check if basic length requirement is met
+    if (id.length === 13) {
+        if (!isValidSAID(id)) {
+            idInput.setCustomValidity("Invalid South African ID Number (Checksum failed).");
         }
-    });
+    }
 }
+
+// Check on blur
+idInput.addEventListener('blur', validateID);
+
+// Clear error on input if user is correcting it
+idInput.addEventListener('input', function() {
+    if (this.value.length === 13) {
+        validateID();
+    } else {
+        this.setCustomValidity("");
+    }
+});
