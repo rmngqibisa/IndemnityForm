@@ -1,6 +1,10 @@
+// Cached DOM elements
+var emergencyToggle = document.getElementById('emergencyToggle');
+var emergencyDetails = document.getElementById('emergencyDetails');
+var idInput = document.getElementById('idnumber');
+
 // Show emergency contact fields if checkbox is selected
-document.getElementById('emergencyToggle').addEventListener('change', function () {
-    var emergencyDetails = document.getElementById('emergencyDetails');
+emergencyToggle.addEventListener('change', function () {
     if (this.checked) {
         emergencyDetails.style.display = 'block';
     } else {
