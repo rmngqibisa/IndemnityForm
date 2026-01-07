@@ -5,11 +5,9 @@ var idInput = document.getElementById('idnumber');
 
 // Show emergency contact fields if checkbox is selected
 emergencyToggle.addEventListener('change', function () {
-    if (this.checked) {
-        emergencyDetails.style.display = 'block';
-    } else {
-        emergencyDetails.style.display = 'none';
-    }
+    var isChecked = this.checked;
+    emergencyDetails.style.display = isChecked ? 'block' : 'none';
+    this.setAttribute('aria-expanded', isChecked);
 });
 
 // Validate South African ID Number using Luhn Algorithm
@@ -43,14 +41,24 @@ function isValidSAID(id) {
 // Form validation on submit
 document.querySelector('form').addEventListener('submit', function(event) {
     var idInput = document.getElementById('idnumber');
+    var idError = document.getElementById('id-error');
     var idValue = idInput.value;
 
     if (!isValidSAID(idValue)) {
         event.preventDefault(); // Prevent form submission
-        alert('Invalid South African ID Number. Please check and try again.');
+
+        // Show inline error
+        idError.textContent = 'Invalid South African ID Number. Please check and try again.';
+        idError.classList.add('visible');
+        idInput.classList.add('input-error');
+        idInput.setAttribute('aria-invalid', 'true');
+
         idInput.focus();
-        idInput.style.borderColor = "red"; // Visual feedback
     } else {
-        idInput.style.borderColor = ""; // Reset style
+        // Clear error
+        idError.classList.remove('visible');
+        idInput.classList.remove('input-error');
+        idInput.setAttribute('aria-invalid', 'false');
+        idError.textContent = '';
     }
 });
