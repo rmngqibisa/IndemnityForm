@@ -21,7 +21,8 @@
         <input type="text" id="fullname" name="Full Name" required autocomplete="name">
 
         <label for="idnumber">ID Number:</label>
-        <input type="text" id="idnumber" name="ID Number" minlength="13" maxlength="13" required pattern="^\d{13}$" title="Please enter a valid ID Number." autocomplete="off">
+        <input type="text" id="idnumber" name="ID Number" minlength="13" maxlength="13" required pattern="^\d{13}$" title="Please enter a valid ID Number." autocomplete="off" aria-describedby="id-error" aria-invalid="false">
+        <div id="id-error" class="error-message" role="alert"></div>
 
         <label for="email">Email Address:</label>
         <input type="email" id="email" name="Email Address" required autocomplete="email">
@@ -30,7 +31,7 @@
         <input type="tel" id="phone" name="Phone Number" minlength="10" maxlength="10" required pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" autocomplete="tel">
 
         <label>
-            <input type="checkbox" id="emergencyToggle"> Add Emergency Contact (Optional)
+            <input type="checkbox" id="emergencyToggle" aria-controls="emergencyDetails" aria-expanded="false"> Add Emergency Contact (Optional)
         </label>
 
         <div class="emergency" id="emergencyDetails">
