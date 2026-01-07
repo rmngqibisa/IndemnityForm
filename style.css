@@ -53,3 +53,13 @@ input[type="submit"]:hover {
 footer {
     text-align: center;
 }
+.input-error {
+    border-color: #d32f2f !important; /* Red */
+}
+.error-message {
+    color: #d32f2f;
+    font-size: 0.875em;
+    margin-top: -8px;
+    margin-bottom: 10px;
+    display: block;
+}

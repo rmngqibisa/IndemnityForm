@@ -40,6 +40,39 @@ function isValidSAID(id) {
     return (sum % 10 === 0);
 }
 
+// Helper functions for inline error handling
+function showError(input, message) {
+    var errorId = input.id + '-error';
+    var errorElement = document.getElementById(errorId);
+
+    // Add error class to input
+    input.classList.add('input-error');
+
+    // Create error message if it doesn't exist
+    if (!errorElement) {
+        errorElement = document.createElement('span');
+        errorElement.id = errorId;
+        errorElement.className = 'error-message';
+        // Insert after the input
+        input.parentNode.insertBefore(errorElement, input.nextSibling);
+    }
+
+    errorElement.textContent = message;
+}
+
+function clearError(input) {
+    var errorId = input.id + '-error';
+    var errorElement = document.getElementById(errorId);
+
+    // Remove error class
+    input.classList.remove('input-error');
+
+    // Remove error message if it exists
+    if (errorElement) {
+        errorElement.parentNode.removeChild(errorElement);
+    }
+}
+
 // Form validation on submit
 document.querySelector('form').addEventListener('submit', function(event) {
     var idInput = document.getElementById('idnumber');
@@ -47,10 +80,9 @@ document.querySelector('form').addEventListener('submit', function(event) {
 
     if (!isValidSAID(idValue)) {
         event.preventDefault(); // Prevent form submission
-        alert('Invalid South African ID Number. Please check and try again.');
+        showError(idInput, 'Invalid South African ID Number. Please check and try again.');
         idInput.focus();
-        idInput.style.borderColor = "red"; // Visual feedback
     } else {
-        idInput.style.borderColor = ""; // Reset style
+        clearError(idInput);
     }
 });
