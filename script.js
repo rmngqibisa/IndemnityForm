@@ -1,7 +1,6 @@
 // Cached DOM elements
 var emergencyToggle = document.getElementById('emergencyToggle');
 var emergencyDetails = document.getElementById('emergencyDetails');
-var idInput = document.getElementById('idnumber');
 
 // Show emergency contact fields if checkbox is selected
 emergencyToggle.addEventListener('change', function () {
@@ -40,17 +39,45 @@ function isValidSAID(id) {
     return (sum % 10 === 0);
 }
 
+// Helper to manage error messages
+function showError(input, message) {
+    input.classList.add('input-error');
+
+    // Check if error message already exists
+    var existingError = input.nextElementSibling;
+    if (existingError && existingError.classList.contains('error-message')) {
+        existingError.textContent = message;
+    } else {
+        var errorSpan = document.createElement('span');
+        errorSpan.className = 'error-message';
+        errorSpan.textContent = message;
+        input.parentNode.insertBefore(errorSpan, input.nextSibling);
+    }
+}
+
+function clearError(input) {
+    input.classList.remove('input-error');
+    var existingError = input.nextElementSibling;
+    if (existingError && existingError.classList.contains('error-message')) {
+        existingError.remove();
+    }
+}
+
 // Form validation on submit
 document.querySelector('form').addEventListener('submit', function(event) {
     var idInput = document.getElementById('idnumber');
     var idValue = idInput.value;
+    var submitBtn = this.querySelector('input[type="submit"]');
+
+    clearError(idInput);
 
     if (!isValidSAID(idValue)) {
         event.preventDefault(); // Prevent form submission
-        alert('Invalid South African ID Number. Please check and try again.');
+        showError(idInput, 'Invalid South African ID Number. Please check and try again.');
         idInput.focus();
-        idInput.style.borderColor = "red"; // Visual feedback
     } else {
-        idInput.style.borderColor = ""; // Reset style
+        // Valid, proceed to submit
+        submitBtn.value = "Submitting...";
+        submitBtn.disabled = true;
     }
 });
