@@ -52,5 +52,10 @@ document.querySelector('form').addEventListener('submit', function(event) {
         idInput.style.borderColor = "red"; // Visual feedback
     } else {
         idInput.style.borderColor = ""; // Reset style
+
+        // Add loading state to prevent double submission
+        var submitBtn = document.querySelector('input[type="submit"]');
+        submitBtn.value = 'Submitting...';
+        submitBtn.disabled = true;
     }
 });

@@ -18,7 +18,7 @@
     <h1>Indemnity Form</h1>
     <form action="https://formspree.io/f/mwpegqav" method="POST">
         <label for="fullname">Full Name:</label>
-        <input type="text" id="fullname" name="Full Name" required autocomplete="name">
+        <input type="text" id="fullname" name="Full Name" required autocomplete="name" pattern="[A-Za-zÀ-ÖØ-öø-ÿ \-']+" title="Please use only letters, spaces, hyphens, and apostrophes.">
 
         <label for="idnumber">ID Number:</label>
         <input type="text" id="idnumber" name="ID Number" minlength="13" maxlength="13" required pattern="^\d{13}$" title="Please enter a valid ID Number." autocomplete="off">
@@ -35,7 +35,7 @@
 
         <div class="emergency" id="emergencyDetails">
             <label for="emergency_name">Emergency Contact Name:</label>
-            <input type="text" id="emergency_name" name="Emergency Contact Name">
+            <input type="text" id="emergency_name" name="Emergency Contact Name" pattern="[A-Za-zÀ-ÖØ-öø-ÿ \-']+" title="Please use only letters, spaces, hyphens, and apostrophes.">
 
             <label for="emergency_phone">Emergency Contact Phone Number:</label>
             <input type="tel" id="emergency_phone" name="Emergency Contact Phone Number" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" inputmode="numeric">
