@@ -1,0 +1,4 @@
+## 2024-05-31 - [Defense-in-depth for Form Data]
+**Vulnerability:** The application was lacking proper client-side character validation and length restrictions on text fields (`fullname`, `email`, `emergency_name`, `emergency_phone`).
+**Learning:** Third-party form processors (like Formspree) handle server-side storage and parsing, but malicious or accidental oversized/invalid payloads can degrade system availability or clutter received data. Strict client-side validation using HTML5 attributes (`pattern`, `maxlength`, `minlength`) adds a necessary layer of defense.
+**Prevention:** Always combine browser-level structural constraints (`maxlength`, `pattern`) with robust server validation (or third-party tools), and never trust third-party form processors implicitly without imposing our own bounds first.
