@@ -1,0 +1,4 @@
+## 2024-05-18 - Missing Input Validation and Length Limits
+**Vulnerability:** The form fields `Full Name`, `Email Address`, and `Emergency Contact Name` were missing `maxlength` attributes, posing a minor DoS risk (buffer attacks on backend/Formspree). In addition, text fields like `Full Name` and `Emergency Contact Name` did not restrict input via the `pattern` attribute, meaning that they accepted numbers, special characters, or potential XSS payloads natively in the browser validation.
+**Learning:** Browser native validation can be used as a first line of defense to restrict input character sets, mitigating arbitrary input prior to server-side submission. Text limits protect against oversized request bodies.
+**Prevention:** Always set a sensible `maxlength` (e.g., 100) on generic text/email inputs, and use `pattern` attributes with Unicode escape sequences to enforce strict whitelisting for text inputs like names.
